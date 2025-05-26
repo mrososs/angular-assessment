@@ -1,0 +1,19 @@
+.footer {
+  font-size: 0.875rem;
+  background-color: #fff;
+
+  .social-icon {
+    font-size: 1.1rem;
+    color: #7367f0;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
