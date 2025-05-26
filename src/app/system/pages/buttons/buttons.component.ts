@@ -5,7 +5,7 @@ import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-buttons',
   standalone: true,
-  imports: [NgFor,NgIf, ButtonComponent],
+  imports: [NgFor, NgIf, ButtonComponent],
   templateUrl: './buttons.component.html',
   styleUrl: './buttons.component.scss',
 })
@@ -28,6 +28,18 @@ export class ButtonsComponent {
     'outline-info',
     'outline-dark',
   ];
-   showBasicHtml = false;
+  sizeVariants = ['sm', 'md', 'lg'];
+  labelVariants = [
+    'label-primary',
+    'label-secondary',
+    'label-success',
+    'label-danger',
+    'label-warning',
+    'label-info',
+    'label-dark',
+  ];
+  showBasicHtml = false;
   showOutlineHtml = false;
+  showLabelHtml = false;
+  showSizeHtml = false;
 }
