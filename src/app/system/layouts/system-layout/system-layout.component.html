@@ -1,0 +1,9 @@
+<app-navbar (menuClicked)="toggleSidebar()"></app-navbar>
+<div class="d-flex">
+  <app-sidebar *ngIf="isSidebarOpen()"></app-sidebar>
+  <main class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<app-footer></app-footer>

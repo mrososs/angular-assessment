@@ -1,0 +1,21 @@
+.navbar {
+  .search-box {
+    background-color: #f3f3f9;
+    border-radius: 6px;
+    input {
+      background-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .nav-link {
+    color: #343a40;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

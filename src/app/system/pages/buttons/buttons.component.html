@@ -1,0 +1,71 @@
+<section class="buttons-page">
+  <h2 class="mb-3">Basic Buttons</h2>
+  <p>
+    Bootstrap includes several button variants, each serving its own semantic
+    purpose, with a few extras thrown in for more control.
+  </p>
+
+  <!-- Basic Buttons Example -->
+  <div class="example-box border rounded p-3 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-uppercase small text-muted fw-bold">Example</span>
+      <span
+        class="text-primary fw-semibold"
+        style="cursor: pointer"
+        (click)="showBasicHtml = !showBasicHtml"
+      >
+        HTML
+      </span>
+    </div>
+
+    <div class="d-flex gap-2 flex-wrap">
+      <app-button
+        *ngFor="let variant of variants"
+        [label]="variant.charAt(0).toUpperCase() + variant.slice(1)"
+        [variant]="variant"
+      ></app-button>
+    </div>
+
+    <pre *ngIf="showBasicHtml" class="mt-3 bg-light p-3 rounded">
+&lt;app-button label="Primary" variant="primary"&gt;&lt;/app-button&gt;
+&lt;app-button label="Secondary" variant="secondary"&gt;&lt;/app-button&gt;
+&lt;app-button label="Success" variant="success"&gt;&lt;/app-button&gt;
+...
+  </pre
+    >
+  </div>
+
+  <h2 class="mt-5 mb-3">Outline Buttons</h2>
+
+  <!-- Outline Buttons Example -->
+ <div class="example-box border rounded p-3 mb-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-uppercase small text-muted fw-bold">Example</span>
+    <span
+      class="text-primary fw-semibold"
+      style="cursor: pointer;"
+      (click)="showOutlineHtml = !showOutlineHtml"
+    >
+      HTML
+    </span>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap">
+    <app-button
+      *ngFor="let variant of outlineVariants"
+      [label]="
+        variant.replace('outline-', '').charAt(0).toUpperCase() +
+        variant.replace('outline-', '').slice(1)
+      "
+      [variant]="variant"
+    ></app-button>
+  </div>
+
+  <pre *ngIf="showOutlineHtml" class="mt-3 bg-light p-3 rounded">
+&lt;app-button label="Primary" variant="outline-primary"&gt;&lt;/app-button&gt;
+&lt;app-button label="Secondary" variant="outline-secondary"&gt;&lt;/app-button&gt;
+...
+  </pre>
+</div>
+
+</section>

@@ -1,0 +1,24 @@
+<button
+  [type]="type"
+  class="btn d-flex align-items-center justify-content-center gap-2"
+  [ngClass]="[
+    'btn-' + variant,
+    size === 'sm' ? 'btn-sm' : '',
+    size === 'lg' ? 'btn-lg' : '',
+    block ? 'w-100' : ''
+  ]"
+  [disabled]="disabled || loading"
+  (click)="clicked.emit()"
+>
+  <ng-container *ngIf="icon && !loading">
+    <i [class]="'bi bi-' + icon"></i>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <span
+      class="spinner-border spinner-border-sm"
+      role="status"
+      aria-hidden="true"
+    ></span>
+  </ng-container>
+  {{ label }}
+</button>

@@ -1,0 +1,22 @@
+.buttons-page {
+  h2 {
+    font-weight: 600;
+  }
+
+  p {
+    color: #6c757d;
+  }
+
+  .example-box {
+    border: 1px solid #e3e3e3;
+    background-color: #fff;
+
+    .fw-semibold {
+      font-weight: 500;
+    }
+
+    .text-uppercase {
+      letter-spacing: 0.05em;
+    }
+  }
+}
