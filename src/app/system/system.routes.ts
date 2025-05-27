@@ -14,7 +14,7 @@ export const systemRoutes: Routes = [
       {
         path: 'inputs',
         loadComponent: () =>
-          import('../shared/components/inputs/inputs.component').then((m) => m.InputsComponent),
+          import('../system/pages/input-page/input-page.component').then((m) => m.InputPageComponent),
       },
       {
         path: 'cards',

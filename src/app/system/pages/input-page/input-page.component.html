@@ -1,0 +1,28 @@
+<h2 class="mb-4">Input Examples</h2>
+
+<app-input
+  type="text"
+  label="Username"
+  placeholder="Enter your name"
+  (valueChange)="handleNameChange($event)"
+></app-input>
+
+<app-input
+  type="file"
+  label="Upload file"
+  (valueChange)="handleFileUpload($event)"
+></app-input>
+
+<app-input
+  type="float-label"
+  label="Email"
+  placeholder="name@example.com"
+  (valueChange)="handleNameChange($event)"
+></app-input>
+
+<app-input
+  type="select"
+  label="Select Gender"
+  [options]="['Male', 'Female']"
+  (valueChange)="handleNameChange($event)"
+></app-input>

@@ -1,1 +1,38 @@
-<p>inputs works!</p>
+<div class="mb-3" *ngIf="type === 'text' || type === 'file'">
+  <label class="form-label fw-semibold" *ngIf="label">{{ label }}</label>
+  <input
+    [type]="type"
+    class="form-control"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [required]="required"
+    (change)="onChange($event)"
+  />
+</div>
+
+<!-- Float Label Style -->
+<div class="form-floating mb-3" *ngIf="type === 'float-label'">
+  <input
+    type="text"
+    class="form-control"
+    id="floatingInput"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [required]="required"
+    (change)="onChange($event)"
+  />
+  <label for="floatingInput">{{ label }}</label>
+</div>
+
+<!-- Select Input -->
+<div class="mb-3" *ngIf="type === 'select'">
+  <label class="form-label fw-semibold" *ngIf="label">{{ label }}</label>
+  <select
+    class="form-select"
+    [disabled]="disabled"
+    [required]="required"
+    (change)="onChange($event)"
+  >
+    <option *ngFor="let opt of options" [value]="opt">{{ opt }}</option>
+  </select>
+</div>
