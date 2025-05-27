@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class InputPageComponent {
   file: File | null = null;
+
   name: string = '';
 
   handleFileUpload(file: File) {

@@ -1,18 +1,18 @@
 <nav
   class="navbar d-flex align-items-center justify-content-between px-4 py-2 shadow-sm bg-white"
 >
-  <!-- Left Section -->
+  <!-- Right Burger + Logo (opens sidebar) -->
   <div class="d-flex align-items-center gap-3">
     <i
       class="bi bi-list fs-4"
       style="cursor: pointer"
-      (click)="toggleMenu()"
+      (click)="menuClicked.emit()"
     ></i>
     <span class="fw-bold fs-5">Vuexy</span>
   </div>
 
-  <!-- Middle Section -->
-  <div class="d-none d-md-block">
+  <!-- Center Search (hidden on small) -->
+  <div class="d-none d-md-block mx-auto">
     <div class="search-box d-flex align-items-center px-2 py-1">
       <i class="bi bi-search me-2 text-muted"></i>
       <input
@@ -23,18 +23,51 @@
     </div>
   </div>
 
-  <!-- Right Section -->
-  <div class="d-flex align-items-center gap-3">
+  <!-- Left Burger for nav items (only on small) -->
+  <i
+    class="bi bi-three-dots fs-4 d-lg-none"
+    style="cursor: pointer"
+    (click)="toggleNavMenu()"
+  ></i>
+
+  <!-- Right Items (hidden in small, shown in overlay when open) -->
+  <div class="navbar-items d-none d-lg-flex align-items-center gap-3">
     <button class="btn btn-primary d-flex align-items-center gap-2">
       <i class="bi bi-gear"></i>
       Live preview
     </button>
-
     <span class="nav-link">Support</span>
     <span class="nav-link">More Themes</span>
     <span class="nav-link">Hire Us</span>
+    <button class="btn btn-success d-flex align-items-center gap-2">
+      <i class="bi bi-person"></i>
+      {{userName}}
+    </button>
+  </div>
 
-    <button class="btn btn-danger d-flex align-items-center gap-2">
+  <!-- Mobile Overlay Menu -->
+  <div
+    class="mobile-nav-overlay position-fixed top-0 start-0 bg-white shadow p-4"
+    *ngIf="mobileNavOpen"
+    style="width: 80%; height: 100vh; z-index: 999"
+  >
+    <div class="d-flex justify-content-between mb-3">
+      <span class="fw-bold fs-5">Menu</span>
+      <i
+        class="bi bi-x-lg"
+        style="cursor: pointer"
+        (click)="toggleNavMenu()"
+      ></i>
+    </div>
+
+    <button class="btn btn-primary w-100 mb-2 d-flex align-items-center gap-2">
+      <i class="bi bi-gear"></i>
+      Live preview
+    </button>
+    <div class="nav-link">Support</div>
+    <div class="nav-link">More Themes</div>
+    <div class="nav-link">Hire Us</div>
+    <button class="btn btn-danger w-100 mt-3 d-flex align-items-center gap-2">
       <i class="bi bi-cart"></i>
       Buy Now
     </button>
