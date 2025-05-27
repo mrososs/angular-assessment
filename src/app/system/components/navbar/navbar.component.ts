@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { StorageService } from '../../../core/services/storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class NavbarComponent {
   @Output() menuClicked = new EventEmitter<void>();
-  userName = localStorage.getItem('username') || 'Guest';
+  private _storgeService = inject(StorageService);
+  userName = this._storgeService.getItem<string>('username') || '';
   mobileNavOpen = false;
   toggleNavMenu() {
     this.mobileNavOpen = !this.mobileNavOpen;

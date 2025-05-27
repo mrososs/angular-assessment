@@ -1,1 +1,61 @@
-<p>register works!</p>
+<div class="bg-white rounded-2 shadow-lg p-4">
+  <div class="row">
+    <div class="col-6">
+      <img
+        src="../../../../assets/img/10173530.png"
+        alt="Login Image"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col-12 col-md-6 col-lg-6">
+      <h1>Start Your Journey</h1>
+      <h2>Sign Up to Vuexy</h2>
+      <p>have account ? <a [routerLink]="['/auth/login']">Sign In</a></p>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <app-input
+                type="text"
+                label="Email"
+                formControlName="email"
+                placeholder="Enter your email"
+              ></app-input>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <app-input
+                type="text"
+                label="Name"
+                formControlName="name"
+                placeholder="Enter your name"
+              ></app-input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <app-input
+                type="password"
+                label="password"
+                formControlName="password"
+                placeholder="Enter your password"
+              ></app-input>
+            </div>
+          </div>
+          <div class="col-12">
+            <app-button
+              [type]="'submit'"
+              [disabled]="!registerForm.valid"
+              [variant]="'primary'"
+              [label]="'submit'"
+              [block]="true"
+            ></app-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

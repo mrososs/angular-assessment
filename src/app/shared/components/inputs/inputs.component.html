@@ -1,4 +1,7 @@
-<div class="mb-3" *ngIf="type === 'text' || type === 'file'">
+<div
+  class="mb-3"
+  *ngIf="type === 'text' || type === 'file' || type === 'password'"
+>
   <label class="form-label fw-semibold" *ngIf="label">{{ label }}</label>
   <input
     [type]="type"
@@ -6,7 +9,9 @@
     [placeholder]="placeholder"
     [disabled]="disabled"
     [required]="required"
+    [value]="value"
     (change)="onChange($event)"
+    (blur)="onTouchedFn()"
   />
 </div>
 
