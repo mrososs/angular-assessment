@@ -1,3 +1,4 @@
+import { ButtonComponent } from './../../../shared/components/button/button.component';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { StorageService } from '../../../core/services/storage.service';
@@ -5,7 +6,7 @@ import { StorageService } from '../../../core/services/storage.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,ButtonComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

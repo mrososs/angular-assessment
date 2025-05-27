@@ -25,8 +25,8 @@ export const systemRoutes: Routes = [
       {
         path: 'cards',
         loadComponent: () =>
-          import('../shared/components/card/card.component').then(
-            (m) => m.CardComponent
+          import('../system/pages/card-page/card-page.component').then(
+            (m) => m.CardPageComponent
           ),
       },
 
