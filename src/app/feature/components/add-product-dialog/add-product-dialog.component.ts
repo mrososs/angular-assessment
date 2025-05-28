@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -25,7 +25,7 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
   templateUrl: './add-product-dialog.component.html',
   styleUrl: './add-product-dialog.component.scss',
 })
-export class AddProductDialogComponent {
+export class AddProductDialogComponent implements OnInit {
   fb = inject(FormBuilder);
   dialogRef = inject(DynamicDialogRef);
   config = inject(DynamicDialogConfig);
@@ -50,30 +50,33 @@ export class AddProductDialogComponent {
   });
 
   @Output() onSave = new EventEmitter<Product>();
- 
+  ngOnInit(): void {
+    const data = this.config.data as Product | undefined;
+
+    if (data) {
+      this.product = data;
+      this.productForm.patchValue(data);
+    }
+  }
 
   close() {
     this.dialogRef.close();
   }
 
-  save() {
-    if (this.productForm.invalid) return;
+save() {
+  if (this.productForm.invalid) return;
 
-    const formValues = this.productForm.value;
+  const formValues = this.productForm.value;
 
-    const newProduct: Product = {
-      id: 0,
-      title: formValues.title!,
-      price: formValues.price!,
-      description: formValues.description!,
-      category: formValues.category!,
-      image: formValues.image!,
-      rating: {
-        rate: 0,
-        count: 0,
-      },
-    };
+  const newProduct: Product = {
+    ...this.product,
+    title: formValues.title!,
+    price: formValues.price!,
+    description: formValues.description!,
+    category: formValues.category!,
+    image: formValues.image!,
+  };
 
-    this.dialogRef.close(newProduct);
-  }
+  this.dialogRef.close(newProduct);
+}
 }

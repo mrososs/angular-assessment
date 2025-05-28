@@ -3,10 +3,18 @@
   <div class="example-box border rounded p-3 mb-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-uppercase small text-muted fw-bold">Example</span>
-      <span class="text-primary fw-semibold" style="cursor: pointer" (click)="showTextCardHtml = !showTextCardHtml">HTML</span>
+      <span
+        class="text-primary fw-semibold"
+        style="cursor: pointer"
+        (click)="showTextCardHtml = !showTextCardHtml"
+        >HTML</span
+      >
     </div>
 
-    <app-card title="Card Title" content="This is a simple card with text content."></app-card>
+    <app-card
+      title="Card Title"
+      content="This is a simple card with text content."
+    ></app-card>
 
     <pre *ngIf="showTextCardHtml" class="mt-3 bg-light p-3 rounded">
 &lt;app-card title="Card Title" content="This is a simple card with text content."&gt;&lt;/app-card&gt;
@@ -17,10 +25,19 @@
   <div class="example-box border rounded p-3 mb-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-uppercase small text-muted fw-bold">Example</span>
-      <span class="text-primary fw-semibold" style="cursor: pointer" (click)="showImageCardHtml = !showImageCardHtml">HTML</span>
+      <span
+        class="text-primary fw-semibold"
+        style="cursor: pointer"
+        (click)="showImageCardHtml = !showImageCardHtml"
+        >HTML</span
+      >
     </div>
 
-    <app-card title="Image Card" content="Card with an image." image="assets/img/card-img.jpg"></app-card>
+    <app-card
+      title="Image Card"
+      content="Card with an image."
+      image="assets/img/card-img.jpg"
+    ></app-card>
 
     <pre *ngIf="showImageCardHtml" class="mt-3 bg-light p-3 rounded">
 &lt;app-card title="Image Card" content="Card with an image." image="assets/img/card-img.jpg"&gt;&lt;/app-card&gt;
@@ -31,13 +48,22 @@
   <div class="example-box border rounded p-3 mb-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-uppercase small text-muted fw-bold">Example</span>
-      <span class="text-primary fw-semibold" style="cursor: pointer" (click)="showActionCardHtml = !showActionCardHtml">HTML</span>
+      <span
+        class="text-primary fw-semibold"
+        style="cursor: pointer"
+        (click)="showActionCardHtml = !showActionCardHtml"
+        >HTML</span
+      >
     </div>
 
     <app-card
       title="Card With Actions"
       content="This card contains action buttons."
-      [actions]="['Edit', 'Delete']">
+      [actions]="[
+        { label: 'View', action: 'view', type: 'info', icon: 'bi bi-eye' },
+        { label: 'edit', action: 'edit', type: 'info', icon: 'bi bi-eye' }
+      ]"
+    >
     </app-card>
 
     <pre *ngIf="showActionCardHtml" class="mt-3 bg-light p-3 rounded">

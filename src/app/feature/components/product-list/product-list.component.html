@@ -11,7 +11,12 @@
         [image]="product.image"
         [actions]="[
           { label: 'View', action: 'view', type: 'info', icon: 'bi bi-eye' },
-          { label: 'Buy', action: 'buy', type: 'success', icon: 'bi bi-cart' },
+          {
+            label: 'Edit',
+            action: 'Edit',
+            type: 'primary',
+            icon: 'bi bi-pencil-square'
+          },
           {
             label: 'Delete',
             action: 'delete',
