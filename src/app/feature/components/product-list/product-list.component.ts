@@ -13,19 +13,25 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 import { Product } from '../../models/product.model';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TableModule } from 'primeng/table';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, TableModule, ButtonComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })
 export class ProductListComponent implements OnInit {
   private _productsService = inject(ProductService);
+  private route = inject(ActivatedRoute);
+
   private _dialogService = inject(DialogService);
   private router = inject(Router);
+  viewMode = signal<'card' | 'table'>('card');
+
   dialogRef: DynamicDialogRef | undefined;
   products = computed(() => this._productsService.products());
   loading = computed(() => this._productsService.loading());
@@ -44,6 +50,14 @@ export class ProductListComponent implements OnInit {
   @ViewChild('topRef') topRef!: ElementRef;
   ngOnInit(): void {
     this._productsService.fetchProducts();
+    this.route.queryParamMap.subscribe((params) => {
+      const view = params.get('view');
+      if (view === 'table') {
+        this.viewMode.set('table');
+      } else {
+        this.viewMode.set('card');
+      }
+    });
   }
   scrollToTop() {
     this.topRef?.nativeElement?.scrollIntoView({ behavior: 'smooth' });
@@ -87,5 +101,9 @@ export class ProductListComponent implements OnInit {
       this.currentPage.update((p) => p - 1);
       this.scrollToTop();
     }
+  }
+  onGlobalFilter(event: Event, table: any) {
+    const input = event.target as HTMLInputElement;
+    table.filterGlobal(input.value, 'contains');
   }
 }

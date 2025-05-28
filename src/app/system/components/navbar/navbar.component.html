@@ -42,6 +42,8 @@
       [label]="'Table'"
       [variant]="'outline-primary'"
       [icon]="'table'"
+      [routerLink]="['/products']"
+      [queryParams]="{ view: 'table' }"
     ></app-button>
 
     <app-button
@@ -76,6 +78,8 @@
       [label]="'Table'"
       [variant]="'outline-primary'"
       [icon]="'table'"
+      [routerLink]="['/products/list']"
+      [queryParams]="{ view: 'table' }"
     ></app-button>
 
     <app-button
