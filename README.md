@@ -1,27 +1,149 @@
-# AngularAssessment
+## 📦 Angular In-Work Technical Assessment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.19.
+This project was built as part of a technical evaluation to demonstrate proficiency in Angular v17+, architectural decisions, component reusability, and frontend best practices in a scalable and modular environment.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 🚀 Tech Stack
 
-## Code scaffolding
+- **Angular** v18 (Standalone Components)
+- **SCSS** (with Bootstrap customization)
+- **PrimeNG** (Table Module)
+- **RxJS**, **HttpClient**, **Interceptors**
+- **Modular Architecture** (`Core`,`auth`, `Shared`, `Feature`, `System`)
+- **ChangeDetectionStrategy.OnPush**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+### 📂 Project Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+src/
+├── auth/           # auth component, login, register, model
+├── core/           # Global services, guards, interceptors
+├── shared/         # Reusable components, directives, pipes
+├── feature/        # Feature-specific modules like Products
+├── system/         # Layout components (Sidebar, Navbar, Footer)
+├── assets/
+└── styles/         # SCSS variables, mixins, Bootstrap overrides
+```
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 📊 Layouts
 
-## Running end-to-end tests
+- **Auth Layout**: For login/register pages
+- **System Layout**: For main dashboard content (includes Sidebar, Navbar, Footer)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+### 🧹 Reusable Components
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+These components were built headlessly, allowing flexibility and content projection via `@ContentChild` and `NgTemplateOutlet`:
+
+- `InputFieldComponent`
+- `InputUploadComponent`
+- `CardComponent`
+- `ButtonComponent`
+
+---
+
+### 📊 PrimeNG Table
+
+- Used **PrimeNG's TableModule** with:
+
+  - Sorting
+  - Filtering
+  - Global Search
+  - Export Options
+
+---
+
+### 📦 Product Module (CRUD)
+
+- View all products in **card view**
+- Switch to **table view** using a toggle
+- Add/Edit/Delete product functionality
+- Detail view with route-based navigation
+
+---
+
+### 🛠 Core Features Implemented
+
+- ✅ Lazy-loaded modules
+- ✅ Custom SCSS structure (with Bootstrap overrides)
+- ✅ HttpClient with Interceptors
+- ✅ RxJS Observables for reactive data flow
+- ✅ Built-in & custom Pipes
+- ✅ Attribute & Structural Directives
+- ✅ `NgTemplateOutlet`, `NgComponentOutlet`
+
+---
+
+### 📦 Optional Enhancements
+
+- ✅ Loader overlay during HTTP requests
+- ✅ Responsive design with Bootstrap classes
+- ✅ Basic animation transitions for routing/components
+
+---
+
+### 📄 How to Run
+
+```bash
+npm install
+ng serve
+```
+
+App will be available at: `http://localhost:4200/`
+
+---
+
+### 📁 Sample Dummy Data
+
+For product listing and table display, either local data or `https://fakestoreapi.com` was used.
+
+---
+
+### 📸 Screenshots
+
+> _(Add UI screenshots here if possible)_
+
+---
+
+### 🧠 Developer Notes
+
+- Focus was placed on clean code, reusability, and maintainability
+- SCSS and Bootstrap were used together with custom theming
+- Code was structured to mimic real-world, enterprise-level architecture
+
+---
+
+### 📚 Commands
+
+```bash
+# Run the app
+ng serve
+
+# Build for production
+ng build
+
+# Lint
+ng lint
+```
+
+---
+
+### 📌 To-Do / Future Improvements
+
+- Add unit tests for core services and shared components
+- Add form validation feedback on InputField
+- Persist products using localStorage or in-memory DB
+- Improve accessibility (ARIA tags)
+
+---
+
+### 👤 Author
+
+- **Your Name**
+- [LinkedIn](https://www.linkedin.com/) | [GitHub](https://github.com/mrososs)
