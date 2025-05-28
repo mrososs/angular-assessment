@@ -71,7 +71,7 @@ These components were built headlessly, allowing flexibility and content project
 ### 🛠 Core Features Implemented
 
 - ✅ Lazy-loaded components
-- ✅ use signals state management 
+- ✅ use signals state management
 - ✅ Custom SCSS structure (with Bootstrap overrides)
 - ✅ HttpClient with Interceptors
 - ✅ RxJS Observables for reactive data flow
@@ -147,4 +147,4 @@ ng lint
 ### 👤 Author
 
 - **Your Name**
-- [LinkedIn](https://www.linkedin.com/) | [GitHub](https://github.com/mrososs)
+- [LinkedIn](https://www.linkedin.com/mohamedosos98/) | [GitHub](https://github.com/mrososs)
