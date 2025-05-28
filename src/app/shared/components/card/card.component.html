@@ -5,11 +5,13 @@
     <h6 class="card-subtitle mb-2 text-muted" *ngIf="subtitle">{{ subtitle }}</h6>
     <p class="card-text">{{ content }}</p>
     <div *ngIf="actions.length > 0" class="mt-3 d-flex gap-2">
-      <button
-        *ngFor="let action of actions"
-        class="btn btn-sm btn-outline-primary"
+     <button
+        *ngFor="let act of actions"
+        (click)="emitAction(act.action)"
+        class="btn btn-sm"
+        [ngClass]="'btn-outline-' + (act.type || 'primary')"
       >
-        {{ action }}
+        <i *ngIf="act.icon" class="{{ act.icon }}"></i> {{ act.label }}
       </button>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Product } from '../models/product.model';
-import { delay, tap, catchError, of } from 'rxjs';
+import { delay, tap, catchError, of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +33,30 @@ export class ProductService {
         tap(() => this._loading.set(false))
       )
       .subscribe();
+  }
+  addProduct(product: Product): Observable<Product> {
+    return this._http.post<Product>(this.productsUrl, product).pipe(
+      tap((newProduct) => {
+        this._products.update((current) => [...current, newProduct]);
+      })
+    );
+  }
+  updateProduct(product: Product): Observable<Product> {
+    const url = `${this.productsUrl}/${product.id}`;
+    return this._http.put<Product>(url, product).pipe(
+      tap((updatedProduct) => {
+        this._products.update((current) =>
+          current.map((p) => (p.id === updatedProduct.id ? updatedProduct : p))
+        );
+      })
+    );
+  }
+  deleteProduct(id: number): Observable<void> {
+    const url = `${this.productsUrl}/${id}`;
+    return this._http.delete<void>(url).pipe(
+      tap(() => {
+        this._products.update((current) => current.filter((p) => p.id !== id));
+      })
+    );
   }
 }

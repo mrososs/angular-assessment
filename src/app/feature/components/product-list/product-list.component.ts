@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CardComponent } from '../../../shared/components/card/card.component';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -47,7 +48,23 @@ export class ProductListComponent implements OnInit {
       this.scrollToTop();
     }
   }
-
+  handleCardAction(action: string, product: Product) {
+    switch (action.toLowerCase()) {
+      case 'delete':
+        if (confirm(`Are you sure you want to delete "${product.title}"?`)) {
+          this._productsService.deleteProduct(product.id).subscribe();
+        }
+        break;
+      case 'view':
+        console.log('Viewing:', product);
+        break;
+      case 'buy':
+        console.log('Buying:', product);
+        break;
+      default:
+        console.warn('Unknown action:', action);
+    }
+  }
   prevPage() {
     if (this.currentPage() > 1) {
       this.currentPage.update((p) => p - 1);

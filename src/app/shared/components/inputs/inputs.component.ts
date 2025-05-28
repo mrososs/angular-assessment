@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -8,8 +8,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   imports: [CommonModule],
   providers: [
     {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: InputsComponent,
+        provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputsComponent),
       multi: true,
     },
   ],

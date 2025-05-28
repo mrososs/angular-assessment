@@ -1,0 +1,46 @@
+<section class="add-product">
+  <div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+      <app-input
+        label="Title"
+        formControlName="title"
+        placeholder="Enter product title"
+      />
+      <app-input
+        label="Price"
+        type="text"
+        formControlName="price"
+        placeholder="Enter product price"
+      />
+      <app-input
+        label="Description"
+        formControlName="description"
+        placeholder="Enter description"
+      />
+      <app-input
+        label="Category"
+        formControlName="category"
+        placeholder="Enter category"
+      />
+      <app-input
+        label="Image URL"
+        formControlName="image"
+        placeholder="Enter image link"
+      />
+
+      <div class="dialog-footer d-flex justify-content-between">
+        <app-button
+          label="Cancel"
+          variant="secondary"
+          (clicked)="close()"
+        ></app-button>
+        <app-button
+          label="Save"
+          variant="primary"
+          type="submit"
+          [disabled]="productForm.invalid"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,12 +1,21 @@
 <section class="productListPage">
   <div class="productListPage__header">
     <h1 class="productListPage__title">Product List</h1>
+
     <p class="productListPage__description">
       Explore our wide range of products.
     </p>
+    <app-button
+  
+      [label]="'add new product'"
+      [variant]="'primary'"
+      (clicked)="openDialog()"
+      [icon]="'plus'"
+    ></app-button>
   </div>
 
-  <div class="productListPage__products">
+  <div class="productListPage__products mt-5">
     <app-product-list></app-product-list>
   </div>
+
 </section>
