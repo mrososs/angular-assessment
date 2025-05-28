@@ -13,6 +13,7 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 import { Product } from '../../models/product.model';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -24,6 +25,7 @@ import { AddProductDialogComponent } from '../add-product-dialog/add-product-dia
 export class ProductListComponent implements OnInit {
   private _productsService = inject(ProductService);
   private _dialogService = inject(DialogService);
+  private router = inject(Router);
   dialogRef: DynamicDialogRef | undefined;
   products = computed(() => this._productsService.products());
   loading = computed(() => this._productsService.loading());
@@ -60,7 +62,8 @@ export class ProductListComponent implements OnInit {
         }
         break;
       case 'view':
-        console.log('Viewing:', product);
+        this.router.navigate(['/products/details', product.id]);
+
         break;
       case 'edit':
         this.dialogRef = this._dialogService.open(AddProductDialogComponent, {

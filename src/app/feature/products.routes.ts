@@ -9,14 +9,20 @@ export const productRoutes: Routes = [
     canActivate: [authGuard],
     children: [
       {
-        
         path: 'list',
         loadComponent: () =>
           import('./pages/product-list-page/product-list-page.component').then(
             (m) => m.ProductListPageComponent
           ),
       },
-       {
+      {
+        path: 'details/:id',
+        loadComponent: () =>
+          import(
+            './pages/product-details-page/product-details-page.component'
+          ).then((m) => m.ProductDetailsPageComponent),
+      },
+      {
         path: '',
         redirectTo: 'list',
         pathMatch: 'full',

@@ -1,1 +1,15 @@
-<p>product-details works!</p>
+<div *ngIf="loading(); else productContent">Loading product...</div>
+
+<ng-template #productContent>
+  <div *ngIf="product(); else errorContent">
+    <h2>{{ product()?.title }}</h2>
+    <img [src]="product()?.image" alt="Product image" class="img-fluid" />
+    <p><strong>Price:</strong> ${{ product()?.price }}</p>
+    <p><strong>Category:</strong> {{ product()?.category }}</p>
+    <p><strong>Description:</strong> {{ product()?.description }}</p>
+  </div>
+</ng-template>
+
+<ng-template #errorContent>
+  <p class="text-danger">{{ error() }}</p>
+</ng-template>

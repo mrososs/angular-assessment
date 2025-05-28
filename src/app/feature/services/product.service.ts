@@ -10,9 +10,11 @@ export class ProductService {
   private productsUrl = '/products';
   private _http = inject(HttpClient);
   private _products = signal<Product[]>([]);
+  private _product = signal<Product | null>(null);
   private _loading = signal(false);
   private _error = signal<string | null>(null);
   products = computed(() => this._products());
+  product = computed(()=>this._product());
   loading = computed(() => this._loading());
   error = computed(() => this._error());
 
@@ -23,11 +25,26 @@ export class ProductService {
     this._http
       .get<Product[]>(this.productsUrl)
       .pipe(
-        delay(1000), // simulate loading
         tap((data) => this._products.set(data)),
         catchError((err) => {
           this._error.set('Failed to fetch products');
           this._products.set([]);
+          return of([]);
+        }),
+        tap(() => this._loading.set(false))
+      )
+      .subscribe();
+  }
+  getProduct(productId: string) {
+    this._loading.set(true);
+    this._error.set(null);
+    this._http
+      .get<Product>(`${this.productsUrl}/${productId}`)
+      .pipe(
+        tap((data) => this._product.set(data)),
+        catchError((err) => {
+          this._error.set('Failed to fetch product');
+          this._product.set(null);
           return of([]);
         }),
         tap(() => this._loading.set(false))
