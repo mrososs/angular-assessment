@@ -15,7 +15,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
     SidebarComponent,
     FooterComponent,
     RouterOutlet,
-    ButtonComponent
+    
   ],
   templateUrl: './system-layout.component.html',
   styleUrl: './system-layout.component.scss',

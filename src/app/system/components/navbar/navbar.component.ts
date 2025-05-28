@@ -2,11 +2,12 @@ import { ButtonComponent } from './../../../shared/components/button/button.comp
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { StorageService } from '../../../core/services/storage.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule,ButtonComponent],
+  imports: [CommonModule,ButtonComponent,RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
