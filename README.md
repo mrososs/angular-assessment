@@ -70,13 +70,14 @@ These components were built headlessly, allowing flexibility and content project
 
 ### 🛠 Core Features Implemented
 
-- ✅ Lazy-loaded modules
+- ✅ Lazy-loaded components
+- ✅ use signals state management 
 - ✅ Custom SCSS structure (with Bootstrap overrides)
 - ✅ HttpClient with Interceptors
 - ✅ RxJS Observables for reactive data flow
 - ✅ Built-in & custom Pipes
 - ✅ Attribute & Structural Directives
-- ✅ `NgTemplateOutlet`, `NgComponentOutlet`
+- ✅ `NgTemplateOutlet`
 
 ---
 
